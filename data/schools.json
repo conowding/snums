@@ -1,0 +1,7 @@
+[
+  { "school_id": "seoul_0001", "name": "가락고등학교", "type": "일반고", "address": "서울 송파구 ..." },
+  { "school_id": "seoul_0002", "name": "가재울고등학교", "type": "일반고", "address": "서울 은평구 ..." },
+  { "school_id": "seoul_0003", "name": "강동고등학교", "type": "일반고", "address": "서울 강동구 ..." },
+  { "school_id": "seoul_0004", "name": "경복고등학교", "type": "자율형", "address": "서울 종로구 ..." },
+  { "school_id": "seoul_0005", "name": "대원외국어고등학교", "type": "특목고", "address": "서울 강남구 " }
+]
