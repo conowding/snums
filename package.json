@@ -1,1 +1,19 @@
-
+{
+  "name": "seoul-school-qna-starter",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+  "start": "node server.js"
+},
+"dependencies": {
+  "bcrypt": "^5.1.0",
+  "body-parser": "^1.20.2",
+  "cors": "^2.8.5",
+  "express": "^4.18.2",
+  "jsonwebtoken": "^9.0.0",
+  "lowdb": "^5.0.4",
+  "nanoid": "^4.0.2",
+  "node-fetch": "^3.4.2",
+  "dotenv": "^16.3.1"
+  }
+}
