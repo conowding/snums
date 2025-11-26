@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>서울 고등학교 Q&A (스타터)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+<div class="max-w-4xl mx-auto p-6">
+<h1 class="text-2xl font-bold mb-4">서울 고등학교 Q&amp;A — 스타터</h1>
+
+
+<div id="auth" class="mb-4"></div>
+
+
+<div class="mb-4">
+<label class="block mb-1 font-medium">학교 검색</label>
+<input id="schoolSearch" placeholder="학교명을 입력하세요" class="w-full p-2 border rounded" />
+<div id="schoolList" class="mt-2 bg-white rounded shadow p-2 max-h-40 overflow-auto"></div>
+</div>
+
+
+<div id="questionForm" class="mb-6 hidden">
+<h2 class="font-semibold">질문 작성</h2>
+<input id="qTitle" placeholder="제목" class="w-full p-2 border rounded mb-2" />
+<textarea id="qContent" rows="4" placeholder="질문 내용을 자세히 써주세요" class="w-full p-2 border rounded mb-2"></textarea>
+<div class="flex gap-2">
+<button id="improveBtn" class="px-4 py-2 bg-blue-600 text-white rounded">AI로 개선</button>
+<button id="postQBtn" class="px-4 py-2 bg-green-600 text-white rounded">질문 등록</button
