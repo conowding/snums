@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인 / 회원가입</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex justify-center items-center h-screen">
+  <div class="w-full max-w-md p-6 bg-white rounded shadow">
+    <h1 class="text-2xl font-bold mb-4 text-center">로그인 / 회원가입</h1>
+
+    <div class="mb-4">
+      <input id="email" type="email" placeholder="Email" class="w-full p-2 border rounded mb-2"/>
+      <input id="password" type="password" placeholder="Password" class="w-full p-2 border rounded mb-2"/>
+      <input id="nickname" placeholder="닉네임" class="w-full p-2 border rounded mb-2"/>
+      <select id="userType" class="w-full p-2 border rounded mb-2">
+        <option value="middle">중학생</option>
+        <option value="high">고등학생</option>
+      </select>
+    </div>
+
+    <div class="flex gap-2">
+      <button id="registerBtn" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">가입</button>
+      <button id="loginBtn" class="flex-1 px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">로그인</button>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
