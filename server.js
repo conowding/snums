@@ -4,13 +4,11 @@ const express = require('express');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
@@ -19,8 +17,6 @@ app.use(express.static('public'));
 // ---------------------
 const schools = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'schools.json')));
 const dbFile = path.join(__dirname, 'data', 'db.json');
-
-// 초기 DB 구조
 let db = { users: [], questions: [], answers: [], verifications: [] };
 if (fs.existsSync(dbFile)) db = JSON.parse(fs.readFileSync(dbFile));
 
@@ -46,6 +42,7 @@ function authMiddleware(req, res, next) {
 // ---------------------
 app.post('/api/auth/register', (req, res) => {
   const { email, password, nickname, user_type } = req.body;
+  if (!email || !password || !nickname) return res.json({ error: '모든 항목 필요' });
   if (db.users.find(u => u.email === email)) return res.json({ error: '이미 존재하는 이메일' });
   const id = Date.now().toString();
   const user = { id, email, password, nickname, user_type, verified: false };
@@ -61,12 +58,12 @@ app.post('/api/auth/login', (req, res) => {
   res.json({ token: generateToken(user) });
 });
 
-// 학생증 인증 요청
 app.post('/api/auth/request-verification', authMiddleware, (req, res) => {
   const { school_id } = req.body;
   if (!school_id) return res.json({ error: '학교 선택 필요' });
+  const exists = db.verifications.find(v => v.user_id === req.user.id);
+  if (exists) return res.json({ error: '이미 신청됨' });
   db.verifications.push({ user_id: req.user.id, school_id, status: 'pending', requested_at: Date.now() });
-  saveDB();
   req.user.verified = false;
   saveDB();
   res.json({ ok: true });
@@ -125,9 +122,7 @@ app.post('/api/questions/:id/answers', authMiddleware, (req, res) => {
 app.post('/api/ai/improve-question', authMiddleware, async (req, res) => {
   const { text } = req.body;
   if (!text) return res.json({ error: '텍스트 필요' });
-
-  // TODO: Gemini API 실제 호출 코드
-  // 여기서는 샘플로 text를 대문자로 반환
+  // 샘플: 그냥 대문자로 변환, 실제 Gemini API 연동 필요
   const improved = text.toUpperCase();
   res.json({ improved });
 });
